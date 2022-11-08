@@ -1,23 +1,26 @@
-export NVM_DIR="$HOME/.nvm"
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# usb device name for my raspberry pi
+export rasp_at_usb1=tty.usbmodem11401
+export rasp_at_usb2=tty.usbmodem11301
 
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# variable to tell the name of micropython device
+export upy_device=tty.usbmodem101
+
+alias ampyrun='ampy -p /dev/$upy_device run'
+alias ampyput='ampy -p /dev/$upy_device put'
+alias ampyls='ampy -p /dev/$upy_device ls'
+alias ampyrm='ampy -p /dev/$upy_device rm'
+alias ampyget='ampy -p /dev/$upy_device get'
+alias ampyblinkled='ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/led_blink.py'
+alias ampysoftreboot='ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
+
+# runs a py file and puts output in log.txt
+function ampyl() {
+    ampy -p /dev/$upy_device run "$1" | tee log.txt
+}
+
+alias rshellrepl='rshell -p /dev/$upy_device --buffer-size 512 repl'
+alias rshellmain='rshell -p /dev/$upy_device --buffer-size 512'
 
 
-export PATH=/Applications/microchip/xc8/v2.32/bin:$PATH
-
-export PATH=/Applications/microchip/xc16/v1.70/bin:$PATH
-
-export PATH=/Users/ambadran717/libraries/qt5:$PATH
-
-export PATH=/Applications/microchip/xc32/v4.00/bin:$PATH
-
-alias ampyrun='ampy -p /dev/tty.usbmodem11401 run'
-alias ampyput='ampy -p /dev/tty.usbmodem11401 put'
-alias ampyls='ampy -p /dev/tty.usbmodem11401 ls'
-alias ampyrm='ampy -p /dev/tty.usbmodem11401 rm'
-
-alias rshellrepl='rshell -p /dev/tty.usbmodem11401 --buffer-size 512 repl'
-alias rshellmain='rshell -p /dev/tty.usbmodem11401 --buffer-size 512'
-
+alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
