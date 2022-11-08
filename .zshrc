@@ -34,6 +34,6 @@ function upload_dotfiles() {
 
   git -C ~/.dotfiles add .
   git -C ~/.dotfiles commit -m "Added latest Mac dotfiles"
-  git -C ~/.dotfiles push origin main
+  git -C ~/.dotfiles push origin Mac
 }
 
