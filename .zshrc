@@ -24,3 +24,16 @@ alias rshellmain='rshell -p /dev/$upy_device --buffer-size 512'
 
 
 alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
+
+
+function upload_dotfiles() {
+  cp ~/.vimrc ~/.dotfiles/
+  cp ~/.zshrc ~/.dotfiles/
+  cp ~/.zshenv ~/.dotfiles/
+  cp ~/.zshprofile ~/.dotfiles/
+
+  git -C ~/.dotfiles add .
+  git -C ~/.dotfiles commit -m "Added latest Mac dotfiles"
+  git -C ~/.dotfiles push origin main
+}
+
