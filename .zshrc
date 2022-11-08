@@ -27,6 +27,8 @@ alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Roo
 
 
 function upload_dotfiles() {
+  git -C ~/.dotfiles checkout Mac
+
   cp ~/.vimrc ~/.dotfiles/
   cp ~/.zshrc ~/.dotfiles/
   cp ~/.zshenv ~/.dotfiles/
