@@ -467,7 +467,6 @@ set noeb vb t_vb=
 " it causes this problem
 "       zsh: suspended (tty output)  vim test.py
  " set shellcmdflag=-ic
-" lskjdflkajsd;lfkjasdl;fkj
 
 
 

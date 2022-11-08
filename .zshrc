@@ -26,6 +26,7 @@ alias rshellmain='rshell -p /dev/$upy_device --buffer-size 512'
 alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
 
 
+# Function to automatically push latest changes to my dotfiles to the Mac repo
 function upload_dotfiles() {
   git -C ~/.dotfiles checkout Mac
 
