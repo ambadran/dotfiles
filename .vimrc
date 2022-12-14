@@ -65,9 +65,6 @@ Plugin 'tomasr/molokai'
 """""" code folding
 Plugin 'tmhedberg/SimpylFold'
 
-"""""" kite plugin for code Completion
-Plugin 'kiteco/vim-plugin'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -413,26 +410,40 @@ command! -bang Profile call s:profile(<bang>0)
 " -----------------------------------------------------------------------------
 " Plugin 'tmhedberg/SimpylFold'
 " -----------------------------------------------------------------------------
-let g:SimpylFold_fold_docstring=1
-let b:SimpylFold_fold_docstring=1
-let g:SimpylFold_fold_import=1
-let b:SimpylFold_fold_import=1
+let g:SimpylFold_fold_docstring=0
+let b:SimpylFold_fold_docstring=0
+let g:SimpylFold_fold_import=0
+let b:SimpylFold_fold_import=0
 
+" if !has("gui_running") && $TERM is "xterm"
+" for [key, code] in [["", "\eOP"],
+" \["", "\eOQ"],
+" \["", "\eOR"],
+" \["", "\eOS"],
+" \["", "\e[15~"],
+" \["", "\e[17~"],
+" \["", "\e[18~"],
+" \["", "\e[19~"],
+" \["", "\e[20~"],
+" \["", "\e[21~"],
+" \]
+" execute "set" key."=".code
+" endfor
+" endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""""""""""""""""""""""""" keymapping for compilling and execution of files"""""""""""""""""""""""""""""""""""" 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" map <f8> :w <CR> :!clear && printf '\e[3J' && gcc % && ./a.out <CR>
-" map <f9> :w <CR> :!clear && printf '\e[3J' && g++ % && ./a.out <CR>
+" set clipboard=unnamed
+" vmap <CTRL-c> "+y
 
-":TODO make shift+f10 work
-"runs the current script with the normal python compiler on the compiler
-" map <f10> :w <CR> :!clear && printf '\e[3J' && python3 % <CR>
+"""""" keymapping for compilling and execution of files
+autocmd FileType python map <buffer> <F9> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
-autocmd FileType python map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType c map <buffer> <F9> :w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
+autocmd FileType cpp map <buffer> <F9> :w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+autocmd FileType cpp imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
 
 autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
@@ -440,33 +451,11 @@ autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p
 autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
 autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
 
-autocmd FileType c map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-autocmd FileType c imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-
-autocmd FileType cpp map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-autocmd FileType cpp imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-
-" runs the current script form the computer on the raspberry pi
-" map <C-b> :w <CR> :!clear && printf '\e[3J' &&  ampy --port /dev/tty.usbmodem11401 run % <CR>
-
-" saves the current script into the raspberry pi then launches the micropython repl, then I have to type from % import *
-" :TODO make so that i don't have to type from % import *
-map <S-b> :w <CR> :!clear && printf '\e[3J' &&  ampy --port /dev/tty.usbmodem11401 put % && rshell -p /dev/tty.usbmodem11401 --buffer-size 512 repl <CR>
-
-" runs the current script form computer and saves output in log.txt 
-map <C-b> :w <CR> :!clear && printf '\e[3J' && ampy --port /dev/tty.usbmodem11401 run % \| tee log.txt <CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " disabling the fucking beebs and flashing
 set noeb vb t_vb=
 
-" making aliases available form inside vim
-" this makes vim interactive, vimrc can see aliases in zshrc for example
-" it causes this problem
-"       zsh: suspended (tty output)  vim test.py
- " set shellcmdflag=-ic
+
 
 
 
