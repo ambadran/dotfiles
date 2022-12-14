@@ -122,8 +122,6 @@ fi
 # global variables
 export upy_device=ttyACM0
 
-#klsdjfldj
-
 alias ampyrun='ampy -p $upy_device run'
 alias ampyput='ampy -p $upy_device put'
 alias ampyls='ampy -p $upy_device ls'
