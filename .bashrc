@@ -120,7 +120,9 @@ fi
 ### my stuff
 
 # global variables
-export upy_device=/dev/ttyACM0
+export upy_device=ttyACM0
+
+#klsdjfldj
 
 alias ampyrun='ampy -p $upy_device run'
 alias ampyput='ampy -p $upy_device put'
@@ -138,4 +140,14 @@ function ampyl() {
 }
 
 
+function update_dotfiles() {
 
+  cp ~/.bashrc ~/.dotfiles/
+  cp ~/.bashprofile ~/.dotfiles/
+  cp ~/.vimrc ~/.dotfiles/
+
+  git -C ~/.dotfiles add .
+  git -C ~/.dotfiles commit -m "Added latest linux dotfiles"
+  git -C ~/.dotfiles push origin linux
+
+}

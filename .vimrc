@@ -448,8 +448,8 @@ autocmd FileType cpp imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!g++' shell
 autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 
-autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
+autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
+autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
 
 
 " disabling the fucking beebs and flashing
