@@ -444,9 +444,15 @@ autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc' shelles
 autocmd FileType cpp map <buffer> <F9> :w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 autocmd FileType cpp imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 
+autocmd FileType c setlocal foldmethod=syntax
+autocmd FileType c setlocal foldmethod=syntax
 
-autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
+autocmd FileType cpp setlocal foldmethod=syntax
+autocmd FileType cpp setlocal foldmethod=syntax
+
+
+" autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
+" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 
 autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
 autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
