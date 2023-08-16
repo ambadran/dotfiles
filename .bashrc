@@ -119,19 +119,30 @@ fi
 ##############################################################################################
 ### my stuff
 
-# global variables
-export upy_device=ttyACM0
+# wine shortcuts
+alias run_flatcam='wine start /home/mr-atom/.wine/drive_c/Program Files/FlatCAM/FlatCAM.exe'
+
+
+# micropython stuff
+export upy_device=/dev/ttyACM0
 
 alias ampyrun='ampy -p $upy_device run'
 alias ampyput='ampy -p $upy_device put'
 alias ampyls='ampy -p $upy_device ls'
 alias ampyrm='ampy -p $upy_device rm'
+alias ampyrmdir='ampy -p $upy_device rmdir'
 alias ampyget='ampy -p $upy_device get'
-
+alias ampyrestart='ampy -p $upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
 function ampyreplace() {
   ampy -p $upy_device rm "$1"
   ampy -p $upy_device put "$1"
 }
+
+
+
+# microchip stuff
+alias ipecmd='/opt/microchip/mplabx/v6.10/mplab_platform/mplab_ipe/ipecmd.jar'
+
 
 function ampyl() {
   ampy -p $upy_device run "$1" | tee log.txt
@@ -149,3 +160,4 @@ function update_dotfiles() {
   git -C ~/.dotfiles push origin linux
 
 }
+
