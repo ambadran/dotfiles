@@ -204,6 +204,12 @@ runtime! macros/matchit.vim
 " Basic mappings
 " -----------------------------------------------------------------------------
 
+"TODO: this won't work because I think I joined the internal buffer and the outside buffer ;/
+" My acstuff not stolen from internet :)
+nnoremap <Leader>d "_d
+xnoremap <Leader>d "_d
+xnoremap <Leader>p "_dP
+
 " Seamlessly treat visual lines as actual lines when moving around.
 noremap j gj
 noremap k gk
@@ -431,8 +437,9 @@ let b:SimpylFold_fold_import=1
 "runs the current script with the normal python compiler on the compiler
 " map <f10> :w <CR> :!clear && printf '\e[3J' && python3 % <CR>
 
-autocmd FileType python map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <F10> <esc>:w<CR> :!clear && printf '\e[3J' <CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F10> <esc>:w<CR> :!clear && printf '\e[3J' <CR>:exec '!python3' shellescape(@%, 1)<CR>
+
 
 autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
@@ -442,6 +449,13 @@ autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p
 
 autocmd FileType c map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 autocmd FileType c imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
+" autocmd FileType c map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc -fopenmp' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+" autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc -fopenmp' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
+autocmd FileType c map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!make' shellescape(@%, 1)<CR>
+autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!make' shellescape(@%, 1)<CR>
+
 
 autocmd FileType cpp map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 autocmd FileType cpp imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
