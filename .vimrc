@@ -441,9 +441,21 @@ let b:SimpylFold_fold_import=0
 " vmap <CTRL-c> "+y
 
 """""" keymapping for compilling and execution of files
+""" Python
 autocmd FileType python map <buffer> <F9> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
+autocmd FileType python map <buffer> <F8> :w <CR> :!clear <CR> :exec '!ampyput' shellescape(@%, 1) <CR>
+autocmd FileType python map <buffer> <F8> <esc> :w <CR> :!clear <CR> :exec '!ampyput' shellescape(@%, 1) <CR>
+
+" autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
+" autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
+
+" autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
+" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
+
+
+""" C & CPP
 autocmd FileType c map <buffer> <F9> :w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 
@@ -456,12 +468,11 @@ autocmd FileType c setlocal foldmethod=syntax
 autocmd FileType cpp setlocal foldmethod=syntax
 autocmd FileType cpp setlocal foldmethod=syntax
 
+autocmd FileType c map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
+autocmd FileType c imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
 
-" autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
-" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
-
-autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
+autocmd FileType h map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
+autocmd FileType h imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
 
 
 " disabling the fucking beebs and flashing

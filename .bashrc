@@ -144,7 +144,7 @@ function ampyl() {
 
 ### microchip stuff
 export ipecmd=/opt/microchip/mplabx/v6.10/mplab_platform/mplab_ipe/ipecmd.sh
-export PATH="/opt/microchip/xc8/v2.41/bin/xc8-cc:$PATH"
+export PATH="/opt/microchip/xc8/v2.41/bin:$PATH"
 
 
 ### Misclaneous
