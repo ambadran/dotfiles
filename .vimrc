@@ -437,28 +437,16 @@ let b:SimpylFold_fold_import=1
 "runs the current script with the normal python compiler on the compiler
 " map <f10> :w <CR> :!clear && printf '\e[3J' && python3 % <CR>
 
+"""""""""""""" Python 
 autocmd FileType python map <buffer> <F10> <esc>:w<CR> :!clear && printf '\e[3J' <CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F10> <esc>:w<CR> :!clear && printf '\e[3J' <CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 
-autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
-autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
+autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 
-autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-
-autocmd FileType c map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-autocmd FileType c imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-
-" autocmd FileType c map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc -fopenmp' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-" autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc -fopenmp' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-
-autocmd FileType c map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!make' shellescape(@%, 1)<CR>
-autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!make' shellescape(@%, 1)<CR>
-
-
-autocmd FileType cpp map <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-autocmd FileType cpp imap <buffer> <F10> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
+autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!ampy -p /dev/$upy_device run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
 
 " runs the current script form the computer on the raspberry pi
 " map <C-b> :w <CR> :!clear && printf '\e[3J' &&  ampy --port /dev/tty.usbmodem11401 run % <CR>
@@ -469,6 +457,46 @@ map <S-b> :w <CR> :!clear && printf '\e[3J' &&  ampy --port /dev/tty.usbmodem114
 
 " runs the current script form computer and saves output in log.txt 
 map <C-b> :w <CR> :!clear && printf '\e[3J' && ampy --port /dev/tty.usbmodem11401 run % \| tee log.txt <CR>
+
+
+"""""""""""""" C
+autocmd FileType c map <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+autocmd FileType c imap <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
+" autocmd FileType c map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc -fopenmp' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+" autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc -fopenmp' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
+autocmd FileType c map <buffer> <F9> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!make' shellescape(@%, 1)<CR>
+autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!make' shellescape(@%, 1)<CR>
+
+
+let s:first_open = get(s:, 'first_open', 0) " set to 0 the first time, keep the old value when resourcing the plugin
+" function! s:ShowAssembly(filename) abort
+function! ShowAssembly(filename) abort
+  exec "!clear && printf '\e[3J'"
+  exec '!gcc -S' a:filename '-o a.s'
+  vsplit a.s
+  exec 'echo' s:first_open
+  #TODO: test if condition here, test if @% == 'a'
+  #TODO: logic will beeb
+  # if first_open
+  #  open_for_first_time()
+  # else 
+  #   if file == 'a'
+  #     quit and reopen
+  #   else
+  #     go to right window
+  #     quit and reopen
+  exec 'echo' @%
+endfunction
+
+autocmd FileType c map <buffer> <F8> <esc> :w <CR> :call ShowAssembly(shellescape(@%, 1)) <CR>
+autocmd FileType c imap <buffer> <F8> <esc> :w <CR> :call ShowAssembly(shellescape(@%, 1))) <CR>
+
+"""""""""""""" C++
+autocmd FileType cpp map <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+autocmd FileType cpp imap <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
