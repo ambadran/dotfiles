@@ -473,21 +473,31 @@ autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:
 let s:first_open = get(s:, 'first_open', 0) " set to 0 the first time, keep the old value when resourcing the plugin
 " function! s:ShowAssembly(filename) abort
 function! ShowAssembly(filename) abort
+
+  " routines in any case
   exec "!clear && printf '\e[3J'"
   exec '!gcc -S' a:filename '-o a.s'
-  vsplit a.s
-  exec 'echo' s:first_open
-  #TODO: test if condition here, test if @% == 'a'
-  #TODO: logic will beeb
-  # if first_open
-  #  open_for_first_time()
-  # else 
-  #   if file == 'a'
-  #     quit and reopen
-  #   else
-  #     go to right window
-  #     quit and reopen
-  exec 'echo' @%
+
+  if ! s:first_open
+
+    vsplit a.s
+    let s:first_open = 1 - s:first_open
+
+  endif
+
+  " if expand('%:t')=="a.s"
+  "   exec 'echo $upy_device'
+  " endif
+"  #TODO: test if condition here, test if @% == 'a'
+"  #TODO: logic will beeb
+"  # if first_open
+"  #  open_for_first_time()
+"  # else 
+"  #   if file == 'a'
+"  #     quit and reopen
+"  #   else
+"  #     go to right window
+"  #     quit and reopen
 endfunction
 
 autocmd FileType c map <buffer> <F8> <esc> :w <CR> :call ShowAssembly(shellescape(@%, 1)) <CR>
