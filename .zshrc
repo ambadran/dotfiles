@@ -14,6 +14,7 @@ alias ampysoftreboot='ampy -p /dev/$upy_device run /Users/ambadran717/micropytho
 function ampyl() {
     ampy -p /dev/$upy_device run "$1" | tee log.txt
 }
+alias rshell1='rshell -p /dev/$upy_device'
 
 alias ampyrun2='ampy -p /dev/$upy_device2 run'
 alias ampyput2='ampy -p /dev/$upy_device2 put'
@@ -26,6 +27,7 @@ alias ampysoftreboot2='ampy -p /dev/$upy_device2 run /Users/ambadran717/micropyt
 function ampyl2() {
     ampy -p /dev/$upy_device2 run "$1" | tee log.txt
 }
+alias rshell2='rshell -p /dev/$upy_device2'
 
 ### Microchip
 export PATH="/Applications/microchip/xc8/v2.32/bin:$PATH"
