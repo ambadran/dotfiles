@@ -1,6 +1,7 @@
 
 ### micropython stuff
 export upy_device=tty.usbmodem101
+export upy_device2=tty.usbmodem1101
 
 alias ampyrun='ampy -p /dev/$upy_device run'
 alias ampyput='ampy -p /dev/$upy_device put'
@@ -14,6 +15,17 @@ function ampyl() {
     ampy -p /dev/$upy_device run "$1" | tee log.txt
 }
 
+alias ampyrun2='ampy -p /dev/$upy_device2 run'
+alias ampyput2='ampy -p /dev/$upy_device2 put'
+alias ampyls2='ampy -p /dev/$upy_device2 ls'
+alias ampyrm2='ampy -p /dev/$upy_device2 rm'
+alias ampyget2='ampy -p /dev/$upy_device2 get'
+alias ampyblinkled2='ampy -p /dev/$upy_device2 run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/led_blink.py'
+alias ampysoftreboot2='ampy -p /dev/$upy_device2 run /Users/ambadran717/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
+# runs a py file and puts output in log.txt
+function ampyl2() {
+    ampy -p /dev/$upy_device2 run "$1" | tee log.txt
+}
 
 ### Microchip
 export PATH="/Applications/microchip/xc8/v2.32/bin:$PATH"
