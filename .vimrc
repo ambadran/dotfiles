@@ -203,7 +203,6 @@ runtime! macros/matchit.vim
 
 " my mappings :)
 noremap Q diwi''<esc>hp
-inoremap Q diwi''<esc>hp
 nnoremap Q diwi''<esc>hp
 
 
@@ -445,8 +444,8 @@ let b:SimpylFold_fold_import=0
 autocmd FileType python map <buffer> <F9> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
-autocmd FileType python map <buffer> <F8> :w <CR> :!clear <CR> :exec '!ampyput' shellescape(@%, 1) <CR>
-autocmd FileType python map <buffer> <F8> <esc> :w <CR> :!clear <CR> :exec '!ampyput' shellescape(@%, 1) <CR>
+autocmd FileType python map <buffer> <F8> :w <CR> :!clear <CR> :exec '!ampy -p $upy_device put' shellescape(@%, 1) <CR>
+autocmd FileType python map <buffer> <F8> <esc> :w <CR> :!clear <CR> :exec '!ampy -p $upy_device put' shellescape(@%, 1) <CR>
 
 " autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
 " autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
@@ -456,8 +455,8 @@ autocmd FileType python map <buffer> <F8> <esc> :w <CR> :!clear <CR> :exec '!amp
 
 
 """ C & CPP
-autocmd FileType c map <buffer> <F9> :w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
-autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
+autocmd FileType c map <buffer> <F9> :w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1) '-lm' <CR>:exec '!./a.out'<CR>
+autocmd FileType c imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!gcc' shellescape(@%, 1) '-lm' <CR>:exec '!./a.out'<CR>
 
 autocmd FileType cpp map <buffer> <F9> :w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 autocmd FileType cpp imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>

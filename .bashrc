@@ -125,7 +125,9 @@ alias run_flatcam='wine start /home/mr-atom/.wine/drive_c/Program Files/FlatCAM/
 
 # micropython stuff
 export upy_device=/dev/ttyACM0
+export upy_device2=/dev/ttyACM1
 
+alias rshell1='rshell -p $upy_device'
 alias ampyrun='ampy -p $upy_device run'
 alias ampyput='ampy -p $upy_device put'
 alias ampyls='ampy -p $upy_device ls'
@@ -133,14 +135,21 @@ alias ampyrm='ampy -p $upy_device rm'
 alias ampyrmdir='ampy -p $upy_device rmdir'
 alias ampyget='ampy -p $upy_device get'
 alias ampyrestart='ampy -p $upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
-function ampyreplace() {
-  ampy -p $upy_device rm "$1"
-  ampy -p $upy_device put "$1"
-}
 function ampyl() {
   ampy -p $upy_device run "$1" | tee log.txt
 }
 
+alias rshell2='rshell -p $upy_device2'
+alias ampyrun2='ampy -p $upy_device2 run'
+alias ampyput2='ampy -p $upy_device2 put'
+alias ampyls2='ampy -p $upy_device2 ls'
+alias ampyrm2='ampy -p $upy_device2 rm'
+alias ampyrmdir2='ampy -p $upy_device2 rmdir'
+alias ampyget2='ampy -p $upy_device2 get'
+alias ampyrestart2='ampy -p $upy_device2 run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
+function ampyl2() {
+  ampy -p $upy_device2 run "$1" | tee log.txt
+}
 
 ### microchip stuff
 export ipecmd=/opt/microchip/mplabx/v6.10/mplab_platform/mplab_ipe/ipecmd.sh
@@ -149,6 +158,7 @@ export PATH="/opt/microchip/xc8/v2.41/bin:$PATH"
 
 ### Misclaneous
 function update_dotfiles() {
+  git -C ~/.dotfiles checkout linux
 
   cp ~/.bashrc ~/.dotfiles/
   cp ~/.bashprofile ~/.dotfiles/
