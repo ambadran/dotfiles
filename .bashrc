@@ -152,14 +152,14 @@ function ampyl2() {
 
 ### Misclaneous
 function update_dotfiles() {
-  git -C ~/.dotfiles checkout linux
+  git -C ~/.dotfiles checkout raspberrypi
 
   cp ~/.bashrc ~/.dotfiles/
   cp ~/.bashprofile ~/.dotfiles/
   cp ~/.vimrc ~/.dotfiles/
 
   git -C ~/.dotfiles add .
-  git -C ~/.dotfiles commit -m "Added latest linux dotfiles"
+  git -C ~/.dotfiles commit -m "Added latest raspberrypi dotfiles"
   git -C ~/.dotfiles push origin linux
 
 }
