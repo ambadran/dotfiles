@@ -163,3 +163,6 @@ function update_dotfiles() {
   git -C ~/.dotfiles push origin raspberrypi
 
 }
+
+alias generate_gcode='python3 ~/PCB-Manufacturer/Programming/cam/cli.py'
+
