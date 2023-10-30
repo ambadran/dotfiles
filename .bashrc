@@ -160,6 +160,6 @@ function update_dotfiles() {
 
   git -C ~/.dotfiles add .
   git -C ~/.dotfiles commit -m "Added latest raspberrypi dotfiles"
-  git -C ~/.dotfiles push origin linux
+  git -C ~/.dotfiles push origin raspberrypi
 
 }
