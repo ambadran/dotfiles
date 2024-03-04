@@ -32,6 +32,8 @@ function ampyl2() {
 ### Microchip
 export PATH="/Applications/microchip/xc8/v2.32/bin:$PATH"
 
+### Pico SDK
+export PICO_SDK_PATH='~/rp2040/pico-sdk'
 
 ### Miscilaneous
 # Function to automatically push latest changes to my dotfiles to the Mac repo
