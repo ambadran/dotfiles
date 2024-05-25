@@ -174,3 +174,6 @@ function update_dotfiles() {
 alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
 
 alias stcproject="python3 ~/.stc/makefile_generator/cli.py"
+
+alias add_gitignore="cp ~/.dotfiles/.gitignore ."
+

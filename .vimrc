@@ -202,8 +202,8 @@ runtime! macros/matchit.vim
 " -----------------------------------------------------------------------------
 
 " my mappings :)
-noremap Q diwi''<esc>hp
-nnoremap Q diwi''<esc>hp
+noremap Q diwi""<esc>hp
+nnoremap Q diwi""<esc>hp
 
 
 " Seamlessly treat visual lines as actual lines when moving around.
