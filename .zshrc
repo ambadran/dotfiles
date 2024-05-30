@@ -49,11 +49,12 @@ function upload_dotfiles() {
   git -C ~/.dotfiles commit -m "Added latest Mac dotfiles"
   git -C ~/.dotfiles push origin Mac
 }
-function clear {
-    osascript -e 'tell application "System Events" to keystroke "k" using command down'
-}
+# function clear {
+#     osascript -e 'tell application "System Events" to keystroke "k" using command down'
+# }
 alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
 
-function test {
-  echo test
-}
+alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
+
+alias add_gitignore="cp ~/.dotfiles/.gitignore ."
+

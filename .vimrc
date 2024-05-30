@@ -211,7 +211,7 @@ xnoremap <Leader>d "_d
 xnoremap <Leader>p "_dP
 
 " my mappings :)
-nnoremap Q diwi''<esc>hp
+nnoremap Q diwi""<esc>hp
 
 " Seamlessly treat visual lines as actual lines when moving around.
 noremap j gj
