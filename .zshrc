@@ -56,5 +56,5 @@ alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Roo
 
 alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
-alias add_gitignore="cp ~/.dotfiles/.gitignore ."
+alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
