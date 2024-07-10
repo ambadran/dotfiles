@@ -157,6 +157,7 @@ function update_dotfiles() {
   cp ~/.bashrc ~/.dotfiles/
   cp ~/.bashprofile ~/.dotfiles/
   cp ~/.vimrc ~/.dotfiles/
+  cp ~/.tmux.conf ~/.dotfiles/
 
   git -C ~/.dotfiles add .
   git -C ~/.dotfiles commit -m "Added latest raspberrypi dotfiles"
