@@ -44,6 +44,7 @@ function upload_dotfiles() {
   cp ~/.zshrc ~/.dotfiles/
   cp ~/.zshenv ~/.dotfiles/
   cp ~/.zshprofile ~/.dotfiles/
+  cp ~/.tmux.conf ~/.dotfiles/
 
   git -C ~/.dotfiles add .
   git -C ~/.dotfiles commit -m "Added latest Mac dotfiles"
