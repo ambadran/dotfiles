@@ -204,6 +204,9 @@ runtime! macros/matchit.vim
 " Basic mappings
 " -----------------------------------------------------------------------------
 
+" since C-a is reserved for tmux special key
+nnoremap <C-b> <C-a>
+
 "TODO: this won't work because I think I joined the internal buffer and the outside buffer ;/
 " My acstuff not stolen from internet :)
 nnoremap <Leader>d "_d
@@ -456,10 +459,12 @@ autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear && printf '\e[3J' 
 
 " saves the current script into the raspberry pi then launches the micropython repl, then I have to type from % import *
 " :TODO make so that i don't have to type from % import *
-map <S-b> :w <CR> :!clear && printf '\e[3J' &&  ampy --port /dev/tty.usbmodem11401 put % && rshell -p /dev/tty.usbmodem11401 --buffer-size 512 repl <CR>
+"
+" map <S-b> :w <CR> :!clear && printf '\e[3J' &&  ampy --port /dev/tty.usbmodem11401 put % && rshell -p /dev/tty.usbmodem11401 --buffer-size 512 repl <CR>
 
 " runs the current script form computer and saves output in log.txt 
-map <C-b> :w <CR> :!clear && printf '\e[3J' && ampy --port /dev/tty.usbmodem11401 run % \| tee log.txt <CR>
+"
+" map <C-b> :w <CR> :!clear && printf '\e[3J' && ampy --port /dev/tty.usbmodem11401 run % \| tee log.txt <CR>
 
 
 """""""""""""" C
