@@ -202,9 +202,12 @@ runtime! macros/matchit.vim
 " Basic mappings
 " -----------------------------------------------------------------------------
 
+" since C-a is reserved for tmux special key
+nnoremap <C-b> <C-a>
+
 " my mappings :)
-noremap Q diwi''<esc>hp
-nnoremap Q diwi''<esc>hp
+noremap Q diwi""<esc>hp
+nnoremap Q diwi""<esc>hp
 
 
 " Seamlessly treat visual lines as actual lines when moving around.
