@@ -177,3 +177,7 @@ alias stcproject="python3 ~/.stc/makefile_generator/cli.py"
 
 alias add_gitignore="cp ~/.dotfiles/.gitignore ."
 
+alias picocomf="picocom --escape f"
+alias picocomfb="picocom --escape f -b 115200"
+alias picocomfbu="picocom --escape f -b 115200 /dev/ttyUSB0"
+
