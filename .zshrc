@@ -63,4 +63,6 @@ alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
 alias picocomf="picocom --escape f"
 alias picocomfb="picocom --escape f -b 115200"
-alias picocomfbu="picocom --escape f -b 115200 /dev/ttyUSB0"
+alias picocomfbu="picocom --escape f -b 115200 /dev/tty.usbserial-0001"
+
+
