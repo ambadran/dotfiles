@@ -175,7 +175,7 @@ alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
 
 alias stcproject="python3 ~/.stc/makefile_generator/cli.py"
 
-alias add_gitignore="cp ~/.dotfiles/.gitignore ."
+alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
 alias picocomf="picocom --escape f"
 alias picocomfb="picocom --escape f -b 115200"
