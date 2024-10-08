@@ -153,7 +153,9 @@ function ampyl2() {
 
 ### microchip stuff
 export ipecmd=/opt/microchip/mplabx/v6.10/mplab_platform/mplab_ipe/ipecmd.sh
-export PATH="/opt/microchip/xc8/v2.41/bin:$PATH"
+export PATH="/opt/microchip/xc8/v2.50/bin:$PATH"
+export PATH="/opt/microchip/xc16/v2.10/bin:$PATH"
+export PATH="/opt/microchip/xc32/v2.45/bin:$PATH"
 
 
 ### Misclaneous
@@ -173,7 +175,7 @@ function update_dotfiles() {
 
 alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
 
-alias stcproject="python3 ~/.stc/makefile_generator/cli.py"
+alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
