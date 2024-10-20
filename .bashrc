@@ -179,9 +179,14 @@ alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
-alias picocomf="picocom --escape f"
-alias picocomfb="picocom --escape f -b 115200"
-alias picocomfbu="picocom --escape f -b 115200 /dev/ttyUSB0"
-function picocomfu() {
+alias picocom="picocom --escape f"
+alias picocomb="picocom --escape f -b 115200"
+alias picocombu="picocom --escape f -b 115200 /dev/ttyUSB0"
+alias picocombc="picocom --escape f -c -b 115200"
+alias picocombuc="picocom --escape f -c -b 115200 /dev/ttyUSB0"
+function picocomu() {
   picocom --escape f -b "$1" /dev/ttyUSB0
+}
+function picocomuc() {
+  picocom --escape f -c -b "$1" /dev/ttyUSB0
 }

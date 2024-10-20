@@ -9,6 +9,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # now pending install vim libraries by opening vim and typing :PluginInstall
 # also install tmux libraries by opening tmux, escape character then :source ~/.tmux.conf
+# Then Must do <prefix> + I
 
 cp .bashprofile ~/
 cp .bashrc ~/
@@ -16,3 +17,4 @@ cp .vimrc ~/
 cp .tmux.conf ~/
 
 tmux source ~/.tmux.conf
+
