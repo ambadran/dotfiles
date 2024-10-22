@@ -157,6 +157,9 @@ export PATH="/opt/microchip/xc8/v2.50/bin:$PATH"
 export PATH="/opt/microchip/xc16/v2.10/bin:$PATH"
 export PATH="/opt/microchip/xc32/v2.45/bin:$PATH"
 
+### STM32 stuff
+export PATH="/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH"
+
 
 ### Misclaneous
 function update_dotfiles() {
