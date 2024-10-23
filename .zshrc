@@ -66,3 +66,6 @@ alias picocomfb="picocom --escape f -b 115200"
 alias picocomfbu="picocom --escape f -b 115200 /dev/tty.usbserial-0001"
 
 
+
+# Created by `pipx` on 2024-09-30 12:33:38
+export PATH="$PATH:/Users/ambadran717/.local/bin"
