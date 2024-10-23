@@ -160,6 +160,9 @@ export PATH="/opt/microchip/xc32/v2.45/bin:$PATH"
 ### STM32 stuff
 export PATH="/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH"
 
+### RP2040 stuff
+export PICO_SDK_PATH=~/MicroControllers/RP2040/pico/pico-sdk
+
 
 ### Misclaneous
 function update_dotfiles() {
