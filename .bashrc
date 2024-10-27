@@ -157,12 +157,16 @@ export PATH="/opt/microchip/xc8/v2.50/bin:$PATH"
 export PATH="/opt/microchip/xc16/v2.10/bin:$PATH"
 export PATH="/opt/microchip/xc32/v2.45/bin:$PATH"
 
+### STC stuff
+alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
+
 ### STM32 stuff
 export PATH="/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH"
 
 ### RP2040 stuff
-export PICO_SDK_PATH=~/MicroControllers/RP2040/pico/pico-sdk
-alias picotool="~/MicroControllers/RP2040/pico/picotool/build/picotool"
+export PICO_SDK_PATH=~/.rp/pico-sdk
+alias picotool=~/.rp/picotool/build/picotool
+alias rpproject="python3 ~/.rp/rp-cmake-generator/cli.py"
 
 ### Misclaneous
 function update_dotfiles() {
@@ -181,7 +185,6 @@ function update_dotfiles() {
 
 alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
 
-alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
