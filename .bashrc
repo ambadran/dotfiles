@@ -168,6 +168,9 @@ export PICO_SDK_PATH=~/.rp/pico-sdk
 alias picotool=~/.rp/picotool/build/picotool
 alias rpproject="python3 ~/.rp/rp-cmake-generator/cli.py"
 
+### teensy 4.1 (i.MXRT) stuff
+export PATH="/home/mr-a-717/MicroControllers/i.MXRT/teensy_loader_cli:$PATH"
+
 ### Misclaneous
 function update_dotfiles() {
   git -C ~/.dotfiles checkout linux
