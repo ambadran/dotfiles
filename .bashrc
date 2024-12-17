@@ -124,32 +124,35 @@ alias run_flatcam='wine start /home/mr-atom/.wine/drive_c/Program Files/FlatCAM/
 
 
 # micropython stuff
-export upy_device=/dev/ttyACM0
-export upy_device2=/dev/ttyACM1
+# export upy_device=/dev/ttyACM0
+# export upy_device2=/dev/ttyACM1
 
-alias rshell1='rshell -p $upy_device'
-alias ampyrun='ampy -p $upy_device run'
-alias ampyput='ampy -p $upy_device put'
-alias ampyls='ampy -p $upy_device ls'
-alias ampyrm='ampy -p $upy_device rm'
-alias ampyrmdir='ampy -p $upy_device rmdir'
-alias ampyget='ampy -p $upy_device get'
-alias ampyrestart='ampy -p $upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
-function ampyl() {
-  ampy -p $upy_device run "$1" | tee log.txt
-}
+# alias rshell1='rshell -p $upy_device'
+# alias ampyrun='ampy -p $upy_device run'
+# alias ampyput='ampy -p $upy_device put'
+# alias ampyls='ampy -p $upy_device ls'
+# alias ampyrm='ampy -p $upy_device rm'
+# alias ampyrmdir='ampy -p $upy_device rmdir'
+# alias ampyget='ampy -p $upy_device get'
+# alias ampyrestart='ampy -p $upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
+# function ampyl() {
+#   ampy -p $upy_device run "$1" | tee log.txt
+# }
 
-alias rshell2='rshell -p $upy_device2'
-alias ampyrun2='ampy -p $upy_device2 run'
-alias ampyput2='ampy -p $upy_device2 put'
-alias ampyls2='ampy -p $upy_device2 ls'
-alias ampyrm2='ampy -p $upy_device2 rm'
-alias ampyrmdir2='ampy -p $upy_device2 rmdir'
-alias ampyget2='ampy -p $upy_device2 get'
-alias ampyrestart2='ampy -p $upy_device2 run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
-function ampyl2() {
-  ampy -p $upy_device2 run "$1" | tee log.txt
-}
+# alias rshell2='rshell -p $upy_device2'
+# alias ampyrun2='ampy -p $upy_device2 run'
+# alias ampyput2='ampy -p $upy_device2 put'
+# alias ampyls2='ampy -p $upy_device2 ls'
+# alias ampyrm2='ampy -p $upy_device2 rm'
+# alias ampyrmdir2='ampy -p $upy_device2 rmdir'
+# alias ampyget2='ampy -p $upy_device2 get'
+# alias ampyrestart2='ampy -p $upy_device2 run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
+# function ampyl2() {
+#   ampy -p $upy_device2 run "$1" | tee log.txt
+# }
+
+# migrating to mpremote :D
+export EDITOR=vim
 
 ### microchip stuff
 export ipecmd=/opt/microchip/mplabx/v6.10/mplab_platform/mplab_ipe/ipecmd.sh
@@ -170,6 +173,9 @@ alias rpproject="python3 ~/.rp/rp-cmake-generator/cli.py"
 
 ### teensy 4.1 (i.MXRT) stuff
 export PATH="/home/mr-a-717/MicroControllers/i.MXRT/teensy_loader_cli:$PATH"
+
+### PlatformIO stuff
+export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
 
 ### Misclaneous
 function update_dotfiles() {
