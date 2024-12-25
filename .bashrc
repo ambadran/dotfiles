@@ -174,6 +174,10 @@ alias rpproject="python3 ~/.rp/rp-cmake-generator/cli.py"
 ### teensy 4.1 (i.MXRT) stuff
 export PATH="/home/mr-a-717/MicroControllers/i.MXRT/teensy_loader_cli:$PATH"
 
+### arduino-cli
+alias arduino-cli-compile="arduino-cli compile --fqbn $fqbn"
+alias arduino-cli-upload="arduino-cli upload -p $arduino_port --fqbn $fqbn"
+
 ### PlatformIO stuff
 export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
 
