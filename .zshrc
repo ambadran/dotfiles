@@ -5,6 +5,10 @@ export EDITOR=vim  # I LOVE MPREMOTE
 ### Microchip
 export PATH="/Applications/microchip/xc8/v2.32/bin:$PATH"
 
+### arduino-cli
+alias arduino-cli-compile="arduino-cli compile --fqbn $fqbn"
+alias arduino-cli-upload="arduino-cli compile --fqbn $fqbn -p $arduino_port"
+
 ### Pico SDK
 export PICO_SDK_PATH=~/rp2040/pico-sdk
 
@@ -27,7 +31,7 @@ function update_dotfiles() {
 # function clear {
 #     osascript -e 'tell application "System Events" to keystroke "k" using command down'
 # }
-alias list_usb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
+alias lsusb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
 
 alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
 
