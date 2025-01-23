@@ -334,7 +334,7 @@ inoremap <expr> <Left> pumvisible() ? "<C-e>" : "<Left>"
 " -----------------------------------------------------------------------------
 
 " Auto-resize splits when Vim gets resized.
-" autocmd VimResized * wincmd =
+autocmd VimResized * wincmd =
 
 " Update a buffer's contents on focus if it changed outside of Vim.
 au FocusGained,BufEnter * :checktime
