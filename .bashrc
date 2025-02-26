@@ -119,38 +119,18 @@ fi
 ##############################################################################################
 ### Raspberry Pi Terminal Personal Configs :)
 
+# 
 
 # micropython stuff
-export upy_device=/dev/ttyACM0
-export upy_device2=/dev/ttyACM1
-
-alias rshell1='rshell -p $upy_device'
-alias ampyrun='ampy -p $upy_device run'
-alias ampyput='ampy -p $upy_device put'
-alias ampyls='ampy -p $upy_device ls'
-alias ampyrm='ampy -p $upy_device rm'
-alias ampyrmdir='ampy -p $upy_device rmdir'
-alias ampyget='ampy -p $upy_device get'
-alias ampyrestart='ampy -p $upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
-function ampyl() {
-  ampy -p $upy_device run "$1" | tee log.txt
-}
-
-
-alias rshell2='rshell -p $upy_device2'
-alias ampyrun2='ampy -p $upy_device2 run'
-alias ampyput2='ampy -p $upy_device2 put'
-alias ampyls2='ampy -p $upy_device2 ls'
-alias ampyrm2='ampy -p $upy_device2 rm'
-alias ampyrmdir2='ampy -p $upy_device2 rmdir'
-alias ampyget2='ampy -p $upy_device2 get'
-alias ampyrestart2='ampy -p $upy_device2 run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py'
-function ampyl2() {
-  ampy -p $upy_device2 run "$1" | tee log.txt
-}
-
+# migrating to mpremote :D
+export EDITOR=vim
 
 ### Misclaneous
+# Generate Gcode
+alias generate_gcode='python3 ~/PCB-Manufacturer/Programming/cam/cli.py'
+
+alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
+
 function update_dotfiles() {
   git -C ~/.dotfiles checkout raspberrypi
 
@@ -165,5 +145,17 @@ function update_dotfiles() {
 
 }
 
-alias generate_gcode='python3 ~/PCB-Manufacturer/Programming/cam/cli.py'
+# `picocom` Command
+alias picocom="picocom --escape f"
+alias picocomb="picocom --escape f -b 115200"
+alias picocombu="picocom --escape f -b 115200 /dev/ttyUSB0"
+alias picocombc="picocom --escape f -c -b 115200"
+alias picocombuc="picocom --escape f -c -b 115200 /dev/ttyUSB0"
+function picocomu() {
+  picocom --escape f -b "$1" /dev/ttyUSB0
+}
+function picocomuc() {
+  picocom --escape f -c -b "$1" /dev/ttyUSB0
+}
+
 
