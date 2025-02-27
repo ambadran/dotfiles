@@ -447,18 +447,13 @@ let b:SimpylFold_fold_import=0
 " vmap <CTRL-c> "+y
 
 """""" keymapping for compilling and execution of files
+"""""" MicroPython
+command! W execute 'w' | !mpremote cp % :
+
+
 """ Python
 autocmd FileType python map <buffer> <F9> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
-
-autocmd FileType python map <buffer> <F8> :w <CR> :!clear <CR> :exec '!ampy -p $upy_device put' shellescape(@%, 1) <CR>
-autocmd FileType python map <buffer> <F8> <esc> :w <CR> :!clear <CR> :exec '!ampy -p $upy_device put' shellescape(@%, 1) <CR>
-
-" autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-" autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-
-" autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
-" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 
 
 """ C & CPP
