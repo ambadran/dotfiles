@@ -127,7 +127,7 @@ export EDITOR=vim
 
 ### Misclaneous
 # Generate Gcode
-alias generate_gcode='python3 ~/PCB-Manufacturer/Programming/cam/cli.py'
+alias pcb_cam='python3 ~/PCB-Manufacturer/Programming/cam/cli.py'
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
