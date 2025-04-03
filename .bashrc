@@ -127,7 +127,7 @@ export EDITOR=vim
 
 ### Misclaneous
 # Generate Gcode
-alias pcb_cam='python3 ~/PCB-Manufacturer/Programming/cam/cli.py'
+alias pcb_cam='python3 ~/pcb-cam/cli.py'
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
@@ -157,5 +157,6 @@ function picocomu() {
 function picocomuc() {
   picocom --escape f -c -b "$1" /dev/ttyUSB0
 }
+
 
 
