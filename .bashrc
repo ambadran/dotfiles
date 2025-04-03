@@ -119,8 +119,12 @@ fi
 ##############################################################################################
 ### my stuff
 
+# editor stuff
+alias batcato='batcat --style=numbers --color=always {}'
+alias vimfzf='vim $(fzf --preview=batcato)'
+
 # wine shortcuts
-alias run_flatcam='wine start /home/mr-atom/.wine/drive_c/Program Files/FlatCAM/FlatCAM.exe'
+alias run_flatcam='wine start /home/mr-atom/.wine/drive_c/Program\ Files/FlatCAM/FlatCAM.exe'
 
 # micropython stuff
 # migrating to mpremote :D
@@ -167,9 +171,6 @@ function update_dotfiles() {
   git -C ~/.dotfiles push origin linux
 
 }
-
-alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
-
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
