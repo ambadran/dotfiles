@@ -33,15 +33,15 @@ function update_dotfiles() {
 # }
 alias lsusb="ioreg -p IOUSB -w0 | sed 's/[^o]*o //; s/@.*$//' | grep -v '^Root.*'"
 
-alias create_gcode="python3 -W ignore ~/programming_projects/pcb-cam/cli.py"
+alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
 
 alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
-alias picocomf="picocom --escape f"
-alias picocomfb="picocom --escape f -b 115200"
-alias picocomfbu="picocom --escape f -b 115200 /dev/tty.usbserial-0001"
+alias picocom="picocom --escape f"
+alias picocomb="picocom --escape f -b 115200"
+alias picocombu="picocom --escape f -b 115200 /dev/tty.usbserial-0001"
 
 
 
