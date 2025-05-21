@@ -1,8 +1,6 @@
 
 sudo apt update
-sudo apt install vim
-sudo apt install vim-gtk3
-sudo apt install tmux
+sudo apt install vim vim-gtk3 tmux xclip xsel wl-clipboard
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
