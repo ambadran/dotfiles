@@ -43,7 +43,9 @@ alias picocom="picocom --escape f"
 alias picocomb="picocom --escape f -b 115200"
 alias picocombu="picocom --escape f -b 115200 /dev/tty.usbserial-0001"
 
-
-
 # Created by `pipx` on 2024-09-30 12:33:38
 export PATH="$PATH:/Users/ambadran717/.local/bin"
+
+# direnv tool (activates .env environment variables the moment I enter a specific folder ;D )
+eval "$(direnv hook zsh)"
+
