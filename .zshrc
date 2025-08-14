@@ -50,6 +50,6 @@ export PATH="$PATH:/Users/ambadran717/.local/bin"
 eval "$(direnv hook zsh)"
 
 # tree without any unwanted files
-alias treeclean="tree -I '__pycache__|.git|.venv'"
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim'"
 
 
