@@ -49,3 +49,7 @@ export PATH="$PATH:/Users/ambadran717/.local/bin"
 # direnv tool (activates .env environment variables the moment I enter a specific folder ;D )
 eval "$(direnv hook zsh)"
 
+# tree without any unwanted files
+alias treeclean="tree -I '__pycache__|.git|.venv'"
+
+
