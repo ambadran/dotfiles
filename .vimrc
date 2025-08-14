@@ -204,6 +204,10 @@ runtime! macros/matchit.vim
 " Basic mappings
 " -----------------------------------------------------------------------------
 
+" my mappings :)
+noremap Q diwi""<esc>hp
+nnoremap Q diwi""<esc>hp
+
 " since C-a is reserved for tmux special key
 nnoremap <C-b> <C-a>
 
