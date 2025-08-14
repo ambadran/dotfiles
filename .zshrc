@@ -1,9 +1,20 @@
 
+### Homebrew
+eval $(/opt/homebrew/bin/brew shellenv)
+
+### Python Stuff
+# PyENV
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 ### micropython stuff
 export EDITOR=vim  # I LOVE MPREMOTE
 
 ### Microchip
-export PATH="/Applications/microchip/xc8/v2.32/bin:$PATH"
+export PATH=/Applications/microchip/xc8/v2.32/bin:$PATH
+export PATH=/Applications/microchip/xc16/v1.70/bin:$PATH
+export PATH=/Applications/microchip/xc32/v4.00/bin:$PATH
 
 ### arduino-cli
 alias arduino-cli-compile="arduino-cli compile --fqbn $fqbn"
@@ -28,6 +39,12 @@ function update_dotfiles() {
   git -C ~/.dotfiles commit -m "Added latest Mac dotfiles"
   git -C ~/.dotfiles push origin Mac
 }
+
+### NVM stuff
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completi
+
 # function clear {
 #     osascript -e 'tell application "System Events" to keystroke "k" using command down'
 # }
@@ -50,6 +67,6 @@ export PATH="$PATH:/Users/ambadran717/.local/bin"
 eval "$(direnv hook zsh)"
 
 # tree without any unwanted files
-alias treeclean="tree -I '__pycache__|.git|.venv|*.vim'"
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version'"
 
 
