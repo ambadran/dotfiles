@@ -119,6 +119,13 @@ fi
 ##############################################################################################
 ### my stuff
 
+# Python PyENV
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+eval "$(pyenv virtualenv-init -)"
+
 # editor stuff
 alias batcato='batcat --style=numbers --color=always {}'
 alias vimfzf='vim $(fzf --preview=batcato)'
@@ -141,6 +148,7 @@ alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
 ### STM32 stuff
 export PATH="/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH"
+export STM32CubeMX_PATH=/home/mr-a-717/STM32CubeMX
 
 ### RP2040 stuff
 export PICO_SDK_PATH=~/.rp/pico-sdk
@@ -155,13 +163,14 @@ alias arduino-cli-compile="arduino-cli compile --fqbn $fqbn"
 alias arduino-cli-upload="arduino-cli upload -p $arduino_port --fqbn $fqbn"
 
 ### PlatformIO stuff
-export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
+# export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
 
 ### Misclaneous
 function update_dotfiles() {
   git -C ~/.dotfiles checkout linux
 
   cp ~/.bashrc ~/.dotfiles/
+  cp ~/.profile ~/.dotfiles/
   cp ~/.bashprofile ~/.dotfiles/
   cp ~/.vimrc ~/.dotfiles/
   cp ~/.tmux.conf ~/.dotfiles/
@@ -172,8 +181,10 @@ function update_dotfiles() {
 
 }
 
+### Github
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
+### Picocom
 alias picocom="picocom --escape f"
 alias picocomb="picocom --escape f -b 115200"
 alias picocombu="picocom --escape f -b 115200 /dev/ttyUSB0"
@@ -188,3 +199,7 @@ function picocomuc() {
 
 # PCB CAM alias
 alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
+
+
+# tree without any unwanted files
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version'"
