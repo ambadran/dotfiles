@@ -39,4 +39,4 @@ else
 fi
 
 echo "Installation checks complete."
-echo "$SHELL"
+exec "$SHELL"
