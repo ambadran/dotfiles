@@ -57,16 +57,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\] \$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h \W \$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]$PS1"
     ;;
 *)
     ;;
@@ -117,35 +117,71 @@ if ! shopt -oq posix; then
 fi
 
 ##############################################################################################
-### Raspberry Pi Terminal Personal Configs :)
+### my stuff
 
-# 
+# Pyenv Stuff
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+# Pyenv virtualenv amazing plugin 
+eval "$(pyenv virtualenv-init -)"
+
+# editor stuff
+alias batcato='batcat --style=numbers --color=always {}'
+alias vimfzf='vim $(fzf --preview=batcato)'
+
+# wine shortcuts
+alias run_flatcam='wine start /home/mr-atom/.wine/drive_c/Program\ Files/FlatCAM/FlatCAM.exe'
 
 # micropython stuff
 # migrating to mpremote :D
 export EDITOR=vim
 
+### microchip stuff
+export ipecmd=/opt/microchip/mplabx/v6.10/mplab_platform/mplab_ipe/ipecmd.sh
+export PATH="/opt/microchip/xc8/v2.50/bin:$PATH"
+export PATH="/opt/microchip/xc16/v2.10/bin:$PATH"
+export PATH="/opt/microchip/xc32/v2.45/bin:$PATH"
+
+### STC stuff
+alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
+
+### STM32 stuff
+export PATH="/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH"
+
+### RP2040 stuff
+export PICO_SDK_PATH=~/.rp/pico-sdk
+alias picotool=~/.rp/picotool/build/picotool
+alias rpproject="python3 ~/.rp/rp-cmake-generator/cli.py"
+
+### teensy 4.1 (i.MXRT) stuff
+export PATH="/home/mr-a-717/MicroControllers/i.MXRT/teensy_loader_cli:$PATH"
+
+### arduino-cli
+alias arduino-cli-compile="arduino-cli compile --fqbn $fqbn"
+alias arduino-cli-upload="arduino-cli upload -p $arduino_port --fqbn $fqbn"
+
+### PlatformIO stuff
+# export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
+
 ### Misclaneous
-# Generate Gcode
-alias pcb_cam='python3 ~/pcb-cam/cli.py'
-
-alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
-
 function update_dotfiles() {
-  git -C ~/.dotfiles checkout raspberrypi
+  git -C ~/.dotfiles checkout linux
 
   cp ~/.bashrc ~/.dotfiles/
+  cp ~/.profile ~/.dotfiles/
   cp ~/.bashprofile ~/.dotfiles/
   cp ~/.vimrc ~/.dotfiles/
   cp ~/.tmux.conf ~/.dotfiles/
 
   git -C ~/.dotfiles add .
-  git -C ~/.dotfiles commit -m "Added latest raspberrypi dotfiles"
-  git -C ~/.dotfiles push origin raspberrypi
+  git -C ~/.dotfiles commit -m "Added latest linux dotfiles"
+  git -C ~/.dotfiles push origin linux
 
 }
 
-# `picocom` Command
+alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
+
 alias picocom="picocom --escape f"
 alias picocomb="picocom --escape f -b 115200"
 alias picocombu="picocom --escape f -b 115200 /dev/ttyUSB0"
@@ -158,5 +194,5 @@ function picocomuc() {
   picocom --escape f -c -b "$1" /dev/ttyUSB0
 }
 
-
-
+# PCB CAM alias
+alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
