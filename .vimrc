@@ -17,7 +17,7 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -74,6 +74,8 @@ Plugin 'goerz/jupytext.vim'
 
 """""" fzf plugin
 
+" Allow yanking and pasting on wayland systems
+Plugin 'jasonccox/vim-wayland-clipboard'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -150,7 +152,7 @@ set autoindent
 set autoread
 set backspace=indent,eol,start
 set backupdir=/tmp//,.
-set clipboard=unnamedplus,unnamed
+set clipboard=unnamedplus
 " set colorcolumn=80 " this makes a stupid vertical coloumn in the middle of the screen for no reason
 set complete+=kspell
 set completeopt=menuone,longest,preview
@@ -221,8 +223,8 @@ noremap j gj
 noremap k gk
 noremap <Down> gj
 noremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+" inoremap <Down> <C-o>gj
+" inoremap <Up> <C-o>gk
 
 " Navigate around splits with a single key combo.
 nnoremap <C-l> <C-w><C-l>
@@ -481,9 +483,3 @@ autocmd FileType h imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
 
 " disabling the fucking beebs and flashing
 set noeb vb t_vb=
-
-
-
-
-
-

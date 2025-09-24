@@ -119,15 +119,12 @@ fi
 ##############################################################################################
 ### my stuff
 
-# Python PyENV
+# Pyenv Stuff
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
 # Pyenv virtualenv amazing plugin 
 eval "$(pyenv virtualenv-init -)"
-
-# direnv stuff, automate source .venv/bin/activate and .env in the project folders (and subfolders) once i just cd into them
-eval "$(direnv hook bash)"
 
 # editor stuff
 alias batcato='batcat --style=numbers --color=always {}'
@@ -151,7 +148,6 @@ alias stcproject="python3 ~/.stc/makefile-generator/cli.py"
 
 ### STM32 stuff
 export PATH="/opt/gcc-arm-none-eabi-10.3-2021.10/bin:$PATH"
-export STM32CubeMX_PATH=/home/mr-a-717/STM32CubeMX
 
 ### RP2040 stuff
 export PICO_SDK_PATH=~/.rp/pico-sdk
@@ -184,10 +180,8 @@ function update_dotfiles() {
 
 }
 
-### Github
 alias add_git_files="cp ~/.dotfiles/.gitignore ~/.dotfiles/.gitattributes ."
 
-### Picocom
 alias picocom="picocom --escape f"
 alias picocomb="picocom --escape f -b 115200"
 alias picocombu="picocom --escape f -b 115200 /dev/ttyUSB0"
@@ -202,7 +196,3 @@ function picocomuc() {
 
 # PCB CAM alias
 alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
-
-
-# tree without any unwanted files
-alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|*.egg-info'"
