@@ -166,7 +166,7 @@ alias arduino-cli-upload="arduino-cli upload -p $arduino_port --fqbn $fqbn"
 
 ### Misclaneous
 function update_dotfiles() {
-  git -C ~/.dotfiles checkout linux
+  git -C ~/.dotfiles checkout raspberrypi
 
   cp ~/.bashrc ~/.dotfiles/
   cp ~/.profile ~/.dotfiles/
@@ -175,8 +175,8 @@ function update_dotfiles() {
   cp ~/.tmux.conf ~/.dotfiles/
 
   git -C ~/.dotfiles add .
-  git -C ~/.dotfiles commit -m "Added latest linux dotfiles"
-  git -C ~/.dotfiles push origin linux
+  git -C ~/.dotfiles commit -m "Added latest raspberrypi dotfiles"
+  git -C ~/.dotfiles push origin raspberrypi
 
 }
 
