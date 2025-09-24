@@ -123,8 +123,11 @@ fi
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - bash)"
-
+# Pyenv virtualenv amazing plugin 
 eval "$(pyenv virtualenv-init -)"
+
+# direnv stuff, automate source .venv/bin/activate and .env in the project folders (and subfolders) once i just cd into them
+eval "$(direnv hook bash)"
 
 # editor stuff
 alias batcato='batcat --style=numbers --color=always {}'
@@ -202,4 +205,4 @@ alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
 
 
 # tree without any unwanted files
-alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version'"
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|*.egg-info'"
