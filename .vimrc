@@ -1,4 +1,3 @@
-
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -18,7 +17,7 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -65,6 +64,18 @@ Plugin 'tomasr/molokai'
 
 """""" code folding
 Plugin 'tmhedberg/SimpylFold'
+
+"""""" jupytext jupyter notebook editing
+Plugin 'goerz/jupytext.vim'
+" let g:jupytext_enable = 1
+" let g:jupytext_command = 'jupytext'
+" let g:jupytext_fmt = 'md'
+" let g:jupytext_to_ipynb_opts = '--to=ipynb --update'
+
+"""""" fzf plugin
+
+" Allow yanking and pasting on wayland systems
+Plugin 'jasonccox/vim-wayland-clipboard'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -141,7 +152,7 @@ set autoindent
 set autoread
 set backspace=indent,eol,start
 set backupdir=/tmp//,.
-set clipboard=unnamedplus,unnamed
+set clipboard=unnamedplus
 " set colorcolumn=80 " this makes a stupid vertical coloumn in the middle of the screen for no reason
 set complete+=kspell
 set completeopt=menuone,longest,preview
@@ -202,9 +213,6 @@ runtime! macros/matchit.vim
 " Basic mappings
 " -----------------------------------------------------------------------------
 
-" since C-a is reserved for tmux special key
-nnoremap <C-b> <C-a>
-
 " my mappings :)
 noremap Q diwi""<esc>hp
 nnoremap Q diwi""<esc>hp
@@ -215,8 +223,8 @@ noremap j gj
 noremap k gk
 noremap <Down> gj
 noremap <Up> gk
-inoremap <Down> <C-o>gj
-inoremap <Up> <C-o>gk
+" inoremap <Down> <C-o>gj
+" inoremap <Up> <C-o>gk
 
 " Navigate around splits with a single key combo.
 nnoremap <C-l> <C-w><C-l>
@@ -444,18 +452,13 @@ let b:SimpylFold_fold_import=0
 " vmap <CTRL-c> "+y
 
 """""" keymapping for compilling and execution of files
+"""""" MicroPython
+command! W execute 'w' | !mpremote cp % :
+
+
 """ Python
 autocmd FileType python map <buffer> <F9> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
-
-autocmd FileType python map <buffer> <F8> :w <CR> :!clear <CR> :exec '!ampy -p $upy_device put' shellescape(@%, 1) <CR>
-autocmd FileType python map <buffer> <F8> <esc> :w <CR> :!clear <CR> :exec '!ampy -p $upy_device put' shellescape(@%, 1) <CR>
-
-" autocmd FileType python map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-" autocmd FileType python imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run ~/micropython/raspberry_pi_pico/imp_files/soft_reboot.py' <CR>
-
-" autocmd FileType python map <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
-" autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:!clear<CR>:exec '!ampy -p /dev/$upy_device run' shellescape(@%, 1)<CR>
 
 
 """ C & CPP
@@ -480,8 +483,3 @@ autocmd FileType h imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
 
 " disabling the fucking beebs and flashing
 set noeb vb t_vb=
-
-
-
-
-
