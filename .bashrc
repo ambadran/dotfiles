@@ -196,3 +196,7 @@ function picocomuc() {
 
 # PCB CAM alias
 alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
+
+# tree without any unwanted files
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|*.egg-info'"
+
