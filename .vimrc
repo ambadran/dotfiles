@@ -379,6 +379,52 @@ endfunction
 " Basic commands
 " ----------------------------------------------------------------------------
 
+"""""" This my custom :mks! function to save :setwinfixheight
+" Custom function to save a session while preserving 'winfixheight' and 'winfixwidth'
+function! SaveSessionWithFixedDimensions(bang, ...)
+    " 1. Figure out the session file name from the arguments
+    let session_file = empty(a:000) ? 'Session.vim' : a:1
+    " Use 'mksession!' if :mks! is used, otherwise 'mksession'
+    let session_cmd = 'mksession' . a:bang . ' ' . session_file
+    
+    " 2. Execute the original mksession command
+    execute session_cmd
+
+    " 3. Find which windows have 'winfixheight' or 'winfixwidth' set
+    let restore_commands = []
+    for win_nr in range(1, winnr('$'))
+        let settings_to_apply = []
+        " Check for winfixheight
+        if getwinvar(win_nr, '&winfixheight')
+            call add(settings_to_apply, 'setlocal winfixheight')
+        endif
+        " Check for winfixwidth
+        if getwinvar(win_nr, '&winfixwidth')
+            call add(settings_to_apply, 'setlocal winfixwidth')
+        endif
+
+        " If this window has at least one of the settings, create a command
+        if !empty(settings_to_apply)
+            let settings_string = join(settings_to_apply, ' | ')
+            let command = win_nr . 'wincmd w | ' . settings_string
+            call add(restore_commands, command)
+        endif
+    endfor
+
+    " 4. If we found any, append the restore commands to the session file
+    if !empty(restore_commands)
+        " 'a' flag means append
+        call writefile(['', '" --- Custom: Restore fixed dimension settings ---'], session_file, 'a')
+        call writefile(restore_commands, session_file, 'a')
+    endif
+    
+    echo "Session saved to " . session_file . " with fixed dimension state preserved."
+endfunction
+
+" Override the default :mks command with our new function
+command! -nargs=* -bang Mks call SaveSessionWithFixedDimensions('<bang>', <f-args>)
+""""""
+
 " Allow files to be saved as root when forgetting to start Vim using sudo.
 command Sw :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
