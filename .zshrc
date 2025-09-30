@@ -10,6 +10,9 @@ eval "$(pyenv init - zsh)"
 #Pyenv virtualenv
 eval "$(pyenv virtualenv-init -)"
 
+### Postgres Service
+export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
+
 ### micropython stuff
 export EDITOR=vim  # I LOVE MPREMOTE
 
