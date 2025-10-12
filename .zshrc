@@ -2,14 +2,6 @@
 ### Homebrew
 eval $(/opt/homebrew/bin/brew shellenv)
 
-### Python Stuff
-# PyENV
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-#Pyenv virtualenv
-eval "$(pyenv virtualenv-init -)"
-
 ### Postgres Service
 export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
 
@@ -70,6 +62,13 @@ export PATH="$PATH:/Users/ambadran717/.local/bin"
 
 # direnv tool (activates .env environment variables the moment I enter a specific folder ;D )
 eval "$(direnv hook zsh)"
+setopt PROMPT_SUBST
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+PS1='$(show_virtual_env)'$PS1
 
 # tree without any unwanted files
 alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version'"
