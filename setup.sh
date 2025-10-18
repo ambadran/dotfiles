@@ -20,5 +20,8 @@ tmux source ~/.tmux.conf
 # On macOS and Linux.
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# On Linux
+curl -sfL https://direnv.net/install.sh | bash
+
 echo "Installation checks complete."
 exec "$SHELL"
