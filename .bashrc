@@ -118,14 +118,7 @@ fi
 
 ##############################################################################################
 ### my stuff
-
-# Pyenv Stuff
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-# Pyenv virtualenv amazing plugin 
-eval "$(pyenv virtualenv-init -)"
-
+#
 # editor stuff
 alias batcato='batcat --style=numbers --color=always {}'
 alias vimfzf='vim $(fzf --preview=batcato)'
@@ -200,3 +193,5 @@ alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
 # tree without any unwanted files
 alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|*.egg-info'"
 
+
+. "$HOME/.local/bin/env"
