@@ -17,26 +17,8 @@ tmux source ~/.tmux.conf
 # Vim plugins: vim -> :PluginInstall
 # Tmux plugins: tmux <key> + I
 
-# Define the target installation directory
-PYENV_ROOT="$HOME/.pyenv"
-
-# --- 1. Install pyenv if not present ---
-if [ ! -d "$PYENV_ROOT" ]; then
-  echo "pyenv not found. Installing..."
-  curl -fsSL https://pyenv.run | bash
-else
-  echo "pyenv is already installed."
-fi
-
-# --- 2. Install pyenv-virtualenv plugin if not present ---
-PLUGIN_DIR="$PYENV_ROOT/plugins/pyenv-virtualenv"
-if [ ! -d "$PLUGIN_DIR" ]; then
-  echo "pyenv-virtualenv plugin not found. Installing..."
-  # We use PYENV_ROOT directly since the `pyenv` command may not be in the script's PATH
-  git clone https://github.com/pyenv/pyenv-virtualenv.git "$PLUGIN_DIR"
-else
-  echo "pyenv-virtualenv plugin is already installed."
-fi
+# On macOS and Linux.
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 echo "Installation checks complete."
 exec "$SHELL"
