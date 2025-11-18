@@ -74,6 +74,7 @@ Plugin 'goerz/jupytext.vim'
 
 """""" fzf plugin
 
+Plugin 'mbbill/undotree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -498,6 +499,16 @@ let b:SimpylFold_fold_import=0
 """""" keymapping for compilling and execution of files
 """""" MicroPython
 command! W execute 'w' | !mpremote cp % :
+
+"""""" the UndoTree plugin key map and settings
+" Toggles the undotree window with Shift+U
+nnoremap U :UndotreeToggle<CR>
+" Width of the undotree history (vertical) pane
+let g:undotree_SplitWidth = 40
+
+" Height of the undotree diff (horizontal) pane
+let g:undotree_DiffpanelHeight = 15
+
 
 
 """ Python

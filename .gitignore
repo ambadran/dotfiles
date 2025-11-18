@@ -24,4 +24,11 @@ __pychache__
 *.env
 *envrc
 .venv
+.venv/
 *.egg-info/
+*.egg-info
+.pytest_cache
+.pytest_cache/
+*.dump
+tmp
+tmp.py
