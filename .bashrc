@@ -211,3 +211,5 @@ alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-ver
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export CAPACITOR_ANDROID_STUDIO_PATH=~/android-studio/bin/studio.sh
