@@ -71,6 +71,10 @@ show_virtual_env() {
 PS1='$(show_virtual_env)'$PS1
 
 # tree without any unwanted files
-alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version'"
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|.node|node_modules'"
 
+export TERM="xterm-256color"
+# Or if your terminal supports it (like iTerm2 or Kitty):
+export COLORTERM="truecolor"
 
+alias hostip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"

@@ -68,6 +68,10 @@ Plugin 'tmhedberg/SimpylFold'
 """""" kite plugin for code Completion
 Plugin 'kiteco/vim-plugin'
 
+
+"""""""" undo tree
+Plugin 'mbbill/undotree'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -446,6 +450,16 @@ let b:SimpylFold_fold_import=1
 ":TODO make shift+f10 work
 "runs the current script with the normal python compiler on the compiler
 " map <f10> :w <CR> :!clear && printf '\e[3J' && python3 % <CR>
+
+
+"""""" the UndoTree plugin key map and settings
+" Toggles the undotree window with Shift+U
+nnoremap U :UndotreeToggle<CR>
+" Width of the undotree history (vertical) pane
+let g:undotree_SplitWidth = 40
+
+" Height of the undotree diff (horizontal) pane
+let g:undotree_DiffpanelHeight = 15
 
 """""""""""""" Python 
 autocmd FileType python map <buffer> <F10> <esc>:w<CR> :!clear && printf '\e[3J' <CR>:exec '!python3' shellescape(@%, 1)<CR>
