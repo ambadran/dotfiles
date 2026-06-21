@@ -3,7 +3,8 @@
 eval $(/opt/homebrew/bin/brew shellenv)
 
 ### Postgres Service
-export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
+# export PATH="$(brew --prefix)/opt/postgresql@17/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 ### micropython stuff
 export EDITOR=vim  # I LOVE MPREMOTE
@@ -78,3 +79,13 @@ export TERM="xterm-256color"
 export COLORTERM="truecolor"
 
 alias hostip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | cut -d\  -f2"
+
+# keep monitoring a local .mmd file where a .png is generated using mmdc and need to keep seeing the new chart as it's being made in a parallel pane ;)
+## Live terminal image preview with entr and chafa
+live_preview() {
+    if [ -z "$1" ]; then
+        echo "Error: No file provided. Usage: preview <filename.png>"
+        return 1
+    fi
+    ls "$1" | entr -c chafa "$1"
+}

@@ -533,6 +533,11 @@ autocmd FileType c imap <buffer> <F8> <esc> :w <CR> :call ShowAssembly(shellesca
 autocmd FileType cpp map <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 autocmd FileType cpp imap <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J' <CR>:exec '!g++' shellescape(@%, 1)<CR>:exec '!./a.out'<CR>
 
+"""""" save and compile mermaid.js chart plain text into a png file of the same name
+" Auto-generate Mermaid PNGs on F10
+autocmd BufRead,BufNewFile *.mmd map <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J'<CR>:!mmdc -i "%" -o "%:r.png" -s 4<CR>
+autocmd BufRead,BufNewFile *.mmd imap <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J'<CR>:!mmdc -i "%" -o "%:r.png" -s 4<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
