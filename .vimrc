@@ -17,7 +17,7 @@ Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -64,6 +64,9 @@ Plugin 'tomasr/molokai'
 
 """""" code folding
 Plugin 'tmhedberg/SimpylFold'
+
+"""""" kite plugin for code Completion
+Plugin 'kiteco/vim-plugin'
 
 """""" jupytext jupyter notebook editing
 Plugin 'goerz/jupytext.vim'
@@ -216,8 +219,71 @@ runtime! macros/matchit.vim
 noremap Q diwi""<esc>hp
 nnoremap Q diwi""<esc>hp
 
+" Force Vim to use xclip for system clipboard
+" ==============================================================================
+" Smart Cross-Platform & Headless Clipboard Synchronization
+" ==============================================================================
+function! SetupSmartClipboard()
+    let l:copy_cmd = ''
+    let l:paste_cmd = ''
 
-" Seamlessly treat visual lines as actual lines when moving around.
+    " 1. Wayland Environment (e.g., Raspberry Pi OS, Fedora Wayland)
+    if !empty($WAYLAND_DISPLAY) && executable('wl-copy')
+        let l:copy_cmd = 'wl-copy'
+        let l:paste_cmd = 'wl-paste -n'
+
+    " 2. X11 Environment with xclip (e.g., Pop!_OS, Ubuntu X11)
+    elseif !empty($DISPLAY) && executable('xclip')
+        let l:copy_cmd = 'xclip -i -selection clipboard'
+        let l:paste_cmd = 'xclip -o -selection clipboard'
+
+    " 3. X11 Environment fallback with xsel
+    elseif !empty($DISPLAY) && executable('xsel')
+        let l:copy_cmd = 'xsel -b -i'
+        let l:paste_cmd = 'xsel -b -o'
+
+    " 4. Headless inside Tmux
+    elseif !empty($TMUX)
+        let l:copy_cmd = 'tmux load-buffer -'
+        let l:paste_cmd = 'tmux save-buffer -'
+    endif
+
+    " Apply GUI/CLI Clipboard Mappings
+    if !empty(l:copy_cmd)
+        let g:smart_clip_copy = l:copy_cmd
+        let g:smart_clip_paste = l:paste_cmd
+
+        augroup SmartClipboard
+            autocmd!
+            autocmd TextYankPost * if v:event.operator ==# 'y' | call system(g:smart_clip_copy, @") | endif
+        augroup END
+
+        execute 'nnoremap <silent> p :let @"=system(g:smart_clip_paste)<CR>p'
+        execute 'nnoremap <silent> P :let @"=system(g:smart_clip_paste)<CR>P'
+
+    else
+        " 5. Pure Headless / Remote SSH Fallback (OSC 52 Escape Sequences)
+        " Sends yanked text over TTY stream to host system clipboard without needing $DISPLAY
+        augroup SmartClipboardOSC52
+            autocmd!
+            autocmd TextYankPost * if v:event.operator ==# 'y' | call s:copy_osc52(@" ) | endif
+        augroup END
+    endif
+endfunction
+
+" OSC 52 Base64 Terminal Clipboard Writer
+function! s:copy_osc52(text)
+    let l:b64 = system('base64 | tr -d "\n"', a:text)
+    let l:esc = "\e]52;c;" . l:b64 . "\x07"
+    if !empty($TMUX)
+        let l:esc = "\ePtmux;\e" . l:esc . "\e\\"
+    endif
+    call writefile([l:esc], '/dev/tty', 'b')
+endfunction
+
+call SetupSmartClipboard()
+
+" seamlessly treat visual lines as actual lines when moving around.
 noremap j gj
 noremap k gk
 noremap <Down> gj
@@ -534,6 +600,11 @@ autocmd FileType c imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
 
 autocmd FileType h map <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
 autocmd FileType h imap <buffer> <F8> <esc>:w<CR>:!clear<CR>:exec '!make' <CR>
+
+" Auto-generate high-res Mermaid PNGs on F10
+autocmd BufNewFile,BufRead *.mmd set filetype=mermaid 
+autocmd BufRead,BufNewFile *.mmd map <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J'<CR>:!mmdc -i "%" -o "%:r.png" -s 1.5 && xclip -selection clipboard -t image/png -i "%:r.png"<CR>
+autocmd BufRead,BufNewFile *.mmd imap <buffer> <F10> <esc>:w<CR>:!clear && printf '\e[3J'<CR>:!mmdc -i "%" -o "%:r.png" -s 1.5 && xclip -selection clipboard -t image/png -i "%:r.png"<CR>
 
 
 " disabling the fucking beebs and flashing

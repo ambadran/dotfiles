@@ -22,6 +22,8 @@ __pychache__
 *.~*
 ~$*
 *.env
+*.env*
+**/.env*
 *envrc
 .venv
 .venv/
@@ -32,3 +34,9 @@ __pychache__
 *.dump
 tmp
 tmp.py
+
+node_modules/
+**/node_modules/**
+dist/
+**/dist/**
+**/*.pem

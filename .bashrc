@@ -130,6 +130,7 @@ export -f show_virtual_env
 PS1='$(show_virtual_env)'$PS1
 
 # editor stuff
+alias vim="vim -X"
 alias batcato='batcat --style=numbers --color=always {}'
 alias vimfzf='vim $(fzf --preview=batcato)'
 
@@ -166,7 +167,7 @@ alias arduino-cli-compile="arduino-cli compile --fqbn $fqbn"
 alias arduino-cli-upload="arduino-cli upload -p $arduino_port --fqbn $fqbn"
 
 ### PlatformIO stuff
-# export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
+export PATH="/home/mr-a-717/.platformio/penv/bin/:$PATH"
 
 ### Misclaneous
 function update_dotfiles() {
@@ -204,7 +205,7 @@ function picocomuc() {
 alias pcb_cam="python3 ~/programming_projects/pcb-cam/cli.py"
 
 # tree without any unwanted files
-alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|*.egg-info'"
+alias treeclean="tree -I '__pycache__|.git|.venv|*.vim|.pytest_cache|.python-version|*.egg-info|.pio|node_modules|build|.gradle'"
 
 
 
@@ -213,3 +214,18 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export CAPACITOR_ANDROID_STUDIO_PATH=~/android-studio/bin/studio.sh
+
+# Point Mermaid to the system Chromium
+export PUPPETEER_EXECUTABLE_PATH=$(find ~/.cache/puppeteer -type f -name "chrome-headless-shell" | head -n 1)
+# Live terminal image preview with entr and chafa (Linux Alacritty version)
+live_preview() {
+    if [ -z "$1" ]; then
+        echo "Error: No file provided. Usage: preview <filename.png>"
+        return 1
+    fi
+    feh -R 1 -. "$1" &
+}
+
+
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
