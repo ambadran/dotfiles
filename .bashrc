@@ -167,3 +167,6 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 # 8. Starship Prompt Initialization
 # ==============================================================================
 eval "$(starship init bash)"
+
+
+. "$HOME/.local/bin/env"
