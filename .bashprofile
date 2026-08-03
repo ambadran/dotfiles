@@ -1,0 +1,4 @@
+# Route login shells (like SSH) to read the standard .profile
+if [ -f "$HOME/.profile" ]; then
+    . "$HOME/.profile"
+fi
