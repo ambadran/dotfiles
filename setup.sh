@@ -5,7 +5,7 @@ echo "Updating APT packages..."
 sudo apt update
 
 # Install core packages needed everywhere
-sudo apt install -y tmux fzf bat tree direnv picocom git curl
+sudo apt install -y tmux fzf bat tree direnv picocom git curl btop nvtop
 
 echo "Installing Neovim..."
 
