@@ -1,7 +1,7 @@
 {
   "providers": {
     "local-llama": {
-      "baseUrl": "$LLAMA_BASE_URL",
+      "baseUrl": "http://100.69.118.29:9931/v1",
       "api": "openai-completions",
       "apiKey": "$LLAMA_API_KEY",
       "models": [
