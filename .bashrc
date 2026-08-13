@@ -143,6 +143,13 @@ function update_dotfiles() {
   echo "Dotfiles successfully pushed to 'linux' branch!"
 }
 
+# Dotfiles Puller
+# Symlinks ensure the system immediately uses the pulled files
+function pull_dotfiles() {
+  git -C $HOME/.dotfiles pull origin linux
+  echo "Dotfiles successfully pulled from 'linux' branch!"
+}
+
 # --- Node / Android / CUDA ---
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -163,15 +170,12 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 #     feh -R 1 -. "$1" &
 # }
 
-# ==============================================================================
-# 8. Starship Prompt Initialization
-# ==============================================================================
-eval "$(starship init bash)"
-
-
-
 if [ -f "$HOME/.local/bin/env" ]; then
     . "$HOME/.local/bin/env"
 fi
 
+# ==============================================================================
+# 8. Starship Prompt Initialization
+# ==============================================================================
+eval "$(starship init bash)"
 

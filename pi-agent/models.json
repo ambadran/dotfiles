@@ -1,0 +1,52 @@
+{
+  "providers": {
+    "local-llama": {
+      "baseUrl": "http://192.168.1.8:9931/v1",
+      "api": "openai-completions",
+      "apiKey": "12038475-0198273-1239048",
+      "models": [
+        {
+          "id": "qwen3.6-27B-Q8-MTP",
+          "name": "Local Qwen 3.6 27B",
+          "contextWindow": 90112,
+          "maxTokens": 65535,
+          "input": ["text"],
+          "reasoning": true
+        },
+        {
+          "id": "qwen3.6-27B-Q8",
+          "name": "Local Qwen 3.6 27B",
+          "contextWindow": 125000,
+          "maxTokens": 65535,
+          "input": ["text"],
+          "reasoning": true
+        },
+
+        {
+          "id": "Qwen36_35B_A3B_MTP_Q6",
+          "name": "Local Qwen 35B",
+          "contextWindow": 131072,
+          "maxTokens": 16384,
+          "input": ["text"],
+          "reasoning": true
+        },
+        {
+          "id": "Qwen36_35B_A3B_MTP_Q5",
+          "name": "Local Qwen 35B",
+          "contextWindow": 131072,
+          "maxTokens": 16384,
+          "input": ["text"],
+          "reasoning": true
+        },
+        {
+          "id": "qwen3-14B",
+          "name": "Local Qwen 14B",
+          "contextWindow": 20480,
+          "maxTokens": 8192,
+          "input": ["text"],
+          "reasoning": false
+        }
+      ]
+    }
+  }
+}

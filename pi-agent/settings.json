@@ -1,0 +1,29 @@
+{
+  "lastChangelogVersion": "0.84.1",
+  "defaultProvider": "local-llama",
+  "defaultModel": "qwen3.6-27B-Q8-MTP",
+  "defaultThinkingLevel": "high",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "compaction": {
+    "enabled": true
+  },
+  "images": {
+    "blockImages": false
+  },
+  "autocompleteMaxVisible": 20,
+  "transport": "auto",
+  "showCacheMissNotices": true,
+  "defaultProjectTrust": "never",
+  "doubleEscapeAction": "tree",
+  "treeFilterMode": "default",
+  "steeringMode": "one-at-a-time",
+  "packages": [
+    "npm:pi-session-manager",
+    "npm:pi-permission-system",
+    "npm:pi-vim"
+  ],
+  "hideThinkingBlock": false,
+  "theme": "dark"
+}

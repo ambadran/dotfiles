@@ -1,0 +1,21 @@
+{
+  "defaultPolicy": {
+    "tools": "ask",
+    "bash": "ask",
+    "mcp": "ask",
+    "skills": "ask",
+    "special": "ask"
+  },
+  "tools": {
+    "read": "allow",
+    "ls": "allow"
+  },
+  "bash": {
+    "ls": "allow",
+    "ls *": "allow",
+    "tree": "allow",
+    "tree *": "allow",
+    "find *": "allow",
+    "grep *": "allow"
+  }
+}

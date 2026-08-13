@@ -70,6 +70,12 @@ ln -sf ~/.dotfiles/.bash_profile ~/
 ln -sf ~/.dotfiles/.profile ~/.profile
 ln -sf ~/.dotfiles/.bashrc ~/
 ln -sf ~/.dotfiles/.tmux.conf ~/
+# Ensure the target directory exists on the machine
+mkdir -p ~/.pi/agent
+# Create the symlinks (-s creates the symlink, -f forces overwrite if a file already exists)
+ln -sf ~/.dotfiles/pi-agent/settings.json ~/.pi/agent/settings.json
+ln -sf ~/.dotfiles/pi-agent/models.json ~/.pi/agent/models.json
+ln -sf ~/.dotfiles/pi-agent/pi-permissions.jsonc ~/.pi/agent/pi-permissions.jsonc
 
 echo "Installing uv..."
 curl -LsSf https://astral.sh/uv/install.sh | sh
