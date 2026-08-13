@@ -1,9 +1,9 @@
 {
   "providers": {
     "local-llama": {
-      "baseUrl": "http://192.168.1.8:9931/v1",
+      "baseUrl": "$LLAMA_BASE_URL",
       "api": "openai-completions",
-      "apiKey": "$PI_API_KEY",
+      "apiKey": "$LLAMA_API_KEY",
       "models": [
         {
           "id": "qwen3.6-27B-Q8-MTP",
