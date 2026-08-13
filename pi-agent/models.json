@@ -6,7 +6,15 @@
       "apiKey": "$LLAMA_API_KEY",
       "models": [
         {
-          "id": "qwen3.6-27B-Q8-MTP",
+          "id": "qwen3.6-27B-Q8-MTP-1*180k",
+          "name": "Local Qwen 3.6 27B",
+          "contextWindow": 180224,
+          "maxTokens": 65535,
+          "input": ["text"],
+          "reasoning": true
+        },
+        {
+          "id": "qwen3.6-27B-Q8-MTP-2*90k",
           "name": "Local Qwen 3.6 27B",
           "contextWindow": 90112,
           "maxTokens": 65535,
