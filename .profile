@@ -21,4 +21,6 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 
-. "$HOME/.local/bin/env"
+if [ -d "$HOME/.local/bin/env" ] ; then
+    . "$HOME/.local/bin/env"
+fi
