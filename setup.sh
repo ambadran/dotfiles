@@ -90,6 +90,7 @@ echo " "
 echo "Next Steps:"
 echo "1. Open tmux and press [Prefix] + Shift-I to install tmux plugins."
 echo "2. Type 'nvim' to automatically install lazy.nvim and all your new plugins."
+echo "3. Remember to `pi update -all`."
 echo "======================================================="
 
 exec "$SHELL"
