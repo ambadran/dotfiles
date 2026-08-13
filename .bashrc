@@ -169,4 +169,9 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 eval "$(starship init bash)"
 
 
-. "$HOME/.local/bin/env"
+
+if [ -f "$HOME/.local/bin/env" ]; then
+    . "$HOME/.local/bin/env"
+fi
+
+
