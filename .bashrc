@@ -138,9 +138,15 @@ alias add_git_files="cp $HOME/.dotfiles/.gitignore $HOME/.dotfiles/.gitattribute
 function update_dotfiles() {
   git -C $HOME/.dotfiles checkout linux
   git -C $HOME/.dotfiles add .
-  git -C $HOME/.dotfiles commit -m "Automated update of linux dotfiles"
-  git -C $HOME/.dotfiles push origin linux
-  echo "Dotfiles successfully pushed to 'linux' branch!"
+
+  # Check if there are changes to commit
+  if ! git -C $HOME/.dotfiles diff-index --quiet HEAD --; then
+    git -C $HOME/.dotfiles commit -m "Automated update of linux dotfiles"
+    git -C $HOME/.dotfiles push origin linux
+    echo "Dotfiles successfully pushed to 'linux' branch!"
+  else
+    echo "No new changes to push."
+  fi
 }
 
 # Dotfiles Puller
