@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.84.1",
   "defaultProvider": "local-llama",
-  "defaultModel": "qwen3.6-27B-Q8-MTP",
+  "defaultModel": "qwen3.6-27B-Q8-MTP-2*90k",
   "defaultThinkingLevel": "high",
   "terminal": {
     "showTerminalProgress": true

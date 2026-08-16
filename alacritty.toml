@@ -1,0 +1,15 @@
+[keyboard]
+bindings = [
+  # 1. Unbind the default Control shortcuts so they pass through to Tmux
+  { key = "Equals", mods = "Control", action = "None" },
+  { key = "Plus",   mods = "Control", action = "None" },
+  { key = "Minus",  mods = "Control", action = "None" },
+  { key = "NumpadAdd", mods = "Control", action = "None" },
+  { key = "NumpadSubtract", mods = "Control", action = "None" },
+
+  # 2. Map font resizing to Alt (Option) instead
+  { key = "Equals", mods = "Alt", action = "IncreaseFontSize" },
+  { key = "Plus",   mods = "Alt", action = "IncreaseFontSize" },
+  { key = "Minus",  mods = "Alt", action = "DecreaseFontSize" },
+  { key = "Key0",   mods = "Alt", action = "ResetFontSize" }
+]
