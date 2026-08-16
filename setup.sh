@@ -47,12 +47,15 @@ echo "Neovim setup complete."
 # ---------------------------------------------------------
 if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
     echo "Desktop environment detected. Installing GUI and clipboard tools..."
-    sudo apt install -y  xclip xsel wl-clipboard
-    # Symlink Alacritty config ONLY on GUI systems
-    # (Adjust the path to match where your alacritty config actually lives in your repo)
-    echo "Symlinking Alacritty config..."
+    sudo apt install -y  xclip xsel wl-clipboard alacritty
+
+    echo "Configuring Alacritty..."
     mkdir -p ~/.config/alacritty
+    
+    echo "Symlinking TOML & YAML Alacritty config."
     ln -sf ~/.dotfiles/alacritty.toml ~/.config/alacritty/alacritty.toml
+    ln -sf ~/.dotfiles/alacritty.yml ~/.config/alacritty/alacritty.yml
+
 else
     echo "Headless server detected. Installing minimal CLI tools..."
     # Install standard vim to avoid downloading massive X11/GTK dependencies

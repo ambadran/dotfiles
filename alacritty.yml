@@ -1,0 +1,45 @@
+window:
+  padding:
+    x: 12
+    y: 12
+  opacity: 0.95
+
+font:
+  normal:
+    family: "Fira Code"
+    style: "Regular"
+  size: 15.0
+  offset:
+    x: -2
+    y: 0
+
+colors:
+  primary:
+    background: '#0A0A0C'
+    foreground: '#00FFFF'
+  cursor:
+    text: '#0A0A0C'
+    cursor: '#FF003C'
+  selection:
+    text: 'CellBackground'
+    background: 'CellForeground'
+  normal:
+    black:   '#1A1B26'
+    red:     '#F7768E'
+    green:   '#9ECE6A'
+    yellow:  '#E0AF68'
+    blue:    '#7AA2F7'
+    magenta: '#BB9AF7'
+    cyan:    '#7DCFFF'
+    white:   '#A9B1D6'
+
+key_bindings:
+  # 1. Forgive the "Ctrl held too long" mistake
+  - { key: Minus, mods: Control, chars: "-" }
+  - { key: Equals, mods: Control|Shift, chars: "+" }
+  - { key: Equals, mods: Control, chars: "=" }
+
+  # 2. Re-map font resizing to Alt
+  - { key: Minus, mods: Alt, action: DecreaseFontSize }
+  - { key: Equals, mods: Alt, action: IncreaseFontSize }
+  - { key: Key0, mods: Alt, action: ResetFontSize }
