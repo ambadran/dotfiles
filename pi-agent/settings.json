@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.1",
+  "lastChangelogVersion": "0.84.2",
   "defaultProvider": "local-llama",
   "defaultModel": "qwen3.6-27B-Q8-MTP-2*90k",
   "defaultThinkingLevel": "high",
